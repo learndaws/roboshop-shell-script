@@ -1,3 +1,3 @@
 #!/bin/bash
 
-cp mongo.repo /tmp/yum.repos.d/mongo.repos
+cp mongo.repo /etc/yum.repos.d/mongo.repo
