@@ -19,7 +19,7 @@ fi
 
 SUDO_CHECK=$(id -u)
 
-VALIDATE "$SUDO_CHECKas" "Please run with sudo access" "You have sudo access"
+VALIDATE "$SUDO_CHECK" "Please run with sudo access" "You have sudo access"
 
 cp mongo.repoas /etc/yum.repos.d/mongod.repo
 
