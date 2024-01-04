@@ -21,7 +21,7 @@ SUDO_CHECK=$(id -u)
 
 VALIDATE $SUDO_CHECK "Please run with sudo access" "You have sudo access"
 
-cp mongo.repoas /etc/yum.repos.d/mongod.repo
+cp mongo.repo /etc/yum.repos.d/mongod.repo
 
 VALIDATE $? "Mongodb repo copying failed" "Mongodb repo copying success"
 
