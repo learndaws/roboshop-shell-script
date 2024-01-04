@@ -11,7 +11,7 @@ VALIDATE()
 if [ $1 != 0 ];
 then
     echo -e "${R} $2 ${N}"
-    exit1
+    exit 1
 else
     echo -e "${G} $3 ${N}"
 fi
