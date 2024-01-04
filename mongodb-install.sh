@@ -17,7 +17,7 @@ else
 fi
 }
 
-SUDO_CHECK=$(id -uas)
+SUDO_CHECK=$(id -u)
 
 VALIDATE "$SUDO_CHECKas" "Please run with sudo access" "You have sudo access"
 
