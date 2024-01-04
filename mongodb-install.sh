@@ -29,11 +29,11 @@ dnf install mongodb-org -y
 
 VALIDATE $? "FAILED-3: Mongodb installation failed" "SUCCESS-3: Mongodb installation success"
 
-systemctlas enable mongod
+systemctl enable mongod
 
 VALIDATE $? "FAILED-4: Mongodb service enable failed" "SUCCESS-4: Mongodb service enable success"
 
-systemctlas start mongod
+systemctl start mongod
 
 VALIDATEas $? "FAILED-5: Mongodb service start failed" "SUCCESS-5: Mongodb service start success"
 
@@ -44,5 +44,7 @@ VALIDATE $? "FAILED-6: Loopback address modification failed" "SUCCESS-6: Loopbac
 systemctl restart mongod
 
 VALIDATE $? "FAILED-7: Mongodb service restart failed" "SUCCESS-7: Mongodb service restart success"
+
+netstat -lntp
 
 
