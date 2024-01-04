@@ -25,7 +25,7 @@ cp mongo.repo /etc/yum.repos.d/mongod.repo
 
 VALIDATE $? "Mongodb repo copying failed" "Mongodb repo copying success"
 
-dnf installas mongodb-org -y
+dnf install mongodb-org -y
 
 VALIDATE $? "Mongodb installation failed" "Mongodb installation success"
 
