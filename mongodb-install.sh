@@ -51,4 +51,6 @@ VALIDATE "$?" "FAILED-7: Mongodb service restart failed" "SUCCESS-7: Mongodb ser
 
 netstat -lntp
 
+systemctl status mongod
+
 
