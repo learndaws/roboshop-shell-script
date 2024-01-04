@@ -1,3 +1,6 @@
 #!/bin/bash
 
-cp mongo.repo /etc/yum.repos.d/mongo.repo
+forr PRINT in (1..5)
+do
+    echo "${PRINT}"
+done
