@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for PRINT in {1..$1}
+for PRINT in {1..100}
 do
     echo "${PRINT}"
 done
