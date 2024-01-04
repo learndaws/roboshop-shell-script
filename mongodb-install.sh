@@ -35,7 +35,7 @@ VALIDATE "$?" "FAILED-4: Mongodb service enable failed" "SUCCESS-4: Mongodb serv
 
 systemctl start mongod
 
-VALIDATEas "$?" "FAILED-5: Mongodb service start failed" "SUCCESS-5: Mongodb service start success"
+VALIDATE "$?" "FAILED-5: Mongodb service start failed" "SUCCESS-5: Mongodb service start success"
 
 sed -i 's/127.0.0.1/0.0.0.0/g' /etc/mongod.conf
 
