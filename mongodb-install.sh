@@ -10,10 +10,10 @@ VALIDATE()
 {
 if [ $1 != 0 ];
 then
-    echo "${R} $2 ${N}"
+    echo -e "${R} $2 ${N}"
     exit1
 else
-    echo "${G} $3 ${N}"
+    echo -e "${G} $3 ${N}"
 fi
 }
 
