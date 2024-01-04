@@ -50,7 +50,7 @@ systemctl restart mongod &>> $LOG
 VALIDATE "$?" "FAILED-7: Mongodb service restart failed" "SUCCESS-7: Mongodb service restart success"
 
 systemctl status mongod
-quit
+
 netstat -lntp
 
 
