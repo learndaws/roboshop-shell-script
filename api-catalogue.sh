@@ -107,12 +107,3 @@ VALIDATE "$?" "FAILED-15" "SUCCESS-15"
 mongo --host mongodb.hellodns.xyz </app/schema/catalogue.js
 
 VALIDATE "$?" "FAILED-16" "SUCCESS-16"
-
-
-
-
-
-
-
-
-
