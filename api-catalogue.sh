@@ -26,7 +26,7 @@ VALIDATE_1()
 if [ $1 != 0 ];
 then
     $2
-    echo "${G} $3 ${N}"
+    echo -e "${G} $3 ${N}"
 fi
 }
 
@@ -52,7 +52,7 @@ id roboshop
 if [ $? != 0 ];
 then
     useradd roboshop
-    echo "${G} username created ${N}"
+    echo -e "${G} username created ${N}"
 fi
 
 cd /app
