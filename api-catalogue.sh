@@ -49,18 +49,14 @@ VALIDATE "$?" "FAILED-4" "SUCCESS-4"
 
 id roboshop
 
-if [ $? != 0 ];
-then
-    useradd roboshop
-    echo -e "${G} username created ${N}"
-fi
+VALIDATE_1 "$?" "useradd roboshop" "username created"
 
-cd /app
+ls -l / | grep app
 
-VALIDATE_1 "$?" "mkdir /app" "${G} /app folder created ${N}"
+VALIDATE_1 "$?" "mkdir /app" "/app folder created"
 
 
-cat /tmp/catalogue.zip
+ls -l /tmp/ | grep  /tmp/catalogue.zip
 
 VALIDATE_1 "$?" "curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip" "catalogue.zip downloaded in temp folder""
 
@@ -82,7 +78,7 @@ npm install
 VALIDATE "$?" "FAILED-8" "SUCCESS-8"
 
 
-cat /etc/systemd/system/catalogue.service
+ls -l /etc/systemd/system/ | grep catalogue.service
 
 VALIDATE_1 "$?" "cp /home/centos/roboshop-shell-script/catalogue.service /etc/systemd/system/catalogue.service" "catalogue.zip downloaded in temp folder"
 
@@ -98,17 +94,19 @@ systemctl start catalogue
 
 VALIDATE "$?" "FAILED-12" "SUCCESS-12"
 
-cp /home/centos/roboshop-shell-script/mongo.repo /etc/yum.repos.d/mongo.repo
+ls -l /etc/yum.repos.d/ | grep mongo.repo
 
-VALIDATE "$?" "FAILED-13" "SUCCESS-13"
-
-dnf install mongodb-org-shell -y
+VALIDATE_1 "$?" "cp /home/centos/roboshop-shell-script/mongo.repo /etc/yum.repos.d/mongo.repo" "SUCCESS-13"
 
 VALIDATE "$?" "FAILED-14" "SUCCESS-14"
 
-mongo --host mongodb.hellodns.xyz </app/schema/catalogue.js
+dnf install mongodb-org-shell -y
 
 VALIDATE "$?" "FAILED-15" "SUCCESS-15"
+
+mongo --host mongodb.hellodns.xyz </app/schema/catalogue.js
+
+VALIDATE "$?" "FAILED-16" "SUCCESS-16"
 
 
 
