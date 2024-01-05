@@ -64,7 +64,7 @@ cd /app
 
 VALIDATE "$?" "FAILED-5" "SUCCESS-5"
 
-unzip /tmp/catalogue.zip
+unzip -o /tmp/catalogue.zip
 
 VALIDATE "$?" "FAILED-6" "SUCCESS-7"
 
