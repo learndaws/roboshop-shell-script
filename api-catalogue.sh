@@ -58,7 +58,7 @@ VALIDATE_1 "$?" "mkdir /app" "/app folder created"
 
 ls -l /tmp/ | grep  catalogue.zip
 
-VALIDATE_1 "$?" "curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip" "catalogue.zip downloaded in temp folder""
+VALIDATE_1 "$?" "curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip" "catalogue.zip downloaded in temp folder"
 
 cd /app
 
