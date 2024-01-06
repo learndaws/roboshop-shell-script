@@ -104,3 +104,7 @@ VALIDATE "$?" "FAILED-14" "SUCCESS-14"
 mongo --host mongodb.hellodns.xyz </app/schema/catalogue.js
 
 VALIDATE "$?" "FAILED-15" "SUCCESS-15"
+
+systemctl status catalogue
+
+ss -tulpn
