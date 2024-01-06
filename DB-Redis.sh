@@ -45,11 +45,9 @@ systemctl start redis  &>> $LOG
 
 VALIDATE "$?" "FAILED-6: redis service start failed" "SUCCESS-6: redis service start success"
 
-systemctl status redis  &>> $LOG
-
-VALIDATE "$?" "FAILED-7: redis status failed" "SUCCESS-7: redis status success"
-
 ss -tulpn
+
+systemctl status redis
 
 
 
