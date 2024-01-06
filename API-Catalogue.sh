@@ -97,12 +97,10 @@ ls -l /etc/yum.repos.d/ | grep mongo.repo
 
 VALIDATE_1 "$?" "cp /home/centos/roboshop-shell-script/mongo.repo /etc/yum.repos.d/mongo.repo" "SUCCESS-13"
 
-VALIDATE "$?" "FAILED-14" "SUCCESS-14"
-
 dnf install mongodb-org-shell -y
 
-VALIDATE "$?" "FAILED-15" "SUCCESS-15"
+VALIDATE "$?" "FAILED-14" "SUCCESS-14"
 
 mongo --host mongodb.hellodns.xyz </app/schema/catalogue.js
 
-VALIDATE "$?" "FAILED-16" "SUCCESS-16"
+VALIDATE "$?" "FAILED-15" "SUCCESS-15"
