@@ -25,7 +25,7 @@ VALIDATE_1()
 {
 if [ $1 != 0 ];
 then
-    $2
+    $2  &>> $LOG
     echo -e "${G} $3 ${N}"
 fi
 }
@@ -34,77 +34,77 @@ SUDO_CHECK=$(id -u)
 
 VALIDATE "${SUDO_CHECK}" "FAILED-1: Please run with sudo access" "SUCCESS-1: You have sudo access"
 
-dnf module disable nodejs -y
+dnf module disable nodejs -y  &>> $LOG
 
 VALIDATE "$?" "FAILED-2" "SUCCESS-2"
 
-dnf module enable nodejs:18 -y
+dnf module enable nodejs:18 -y  &>> $LOG
 
 VALIDATE "$?" "FAILED-3" "SUCCESS-3"
 
-dnf install nodejs -y
+dnf install nodejs -y  &>> $LOG
 
 VALIDATE "$?" "FAILED-4" "SUCCESS-4"
 
 
-id roboshop
+id roboshop  &>> $LOG
 
-VALIDATE_1 "$?" "useradd roboshop" "username created"
+VALIDATE_1 "$?" "useradd roboshop" "SUCCESS-5: username created"
 
-ls -l / | grep app
+ls -l / | grep app  &>> $LOG
 
-VALIDATE_1 "$?" "mkdir /app" "/app folder created"
+VALIDATE_1 "$?" "mkdir /app" "SUCCESS-6: /app folder created"
 
 
-ls -l /tmp/ | grep  catalogue.zip
+ls -l /tmp/ | grep  catalogue.zip  &>> $LOG
 
-VALIDATE_1 "$?" "curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip" "catalogue.zip downloaded in temp folder"
+VALIDATE_1 "$?" "curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip" "SUCCESS-7: catalogue.zip downloaded in temp folder"
 
-cd /app
-
-VALIDATE "$?" "FAILED-5" "SUCCESS-5"
-
-unzip -o /tmp/catalogue.zip
-
-VALIDATE "$?" "FAILED-6" "SUCCESS-7"
-
-cd /app
-
-VALIDATE "$?" "FAILED-7" "SUCCESS-7"
-
-npm install 
+cd /app  &>> $LOG
 
 VALIDATE "$?" "FAILED-8" "SUCCESS-8"
 
+unzip -o /tmp/catalogue.zip  &>> $LOG
 
-ls -l /etc/systemd/system/ | grep catalogue.service
+VALIDATE "$?" "FAILED-9" "SUCCESS-9"
 
-VALIDATE_1 "$?" "cp /home/centos/roboshop-shell-script/catalogue.service /etc/systemd/system/catalogue.service" "catalogue.zip downloaded in temp folder"
-
-systemctl daemon-reload
+cd /app  &>> $LOG
 
 VALIDATE "$?" "FAILED-10" "SUCCESS-10"
 
-systemctl enable catalogue
+npm install  &>> $LOG
 
 VALIDATE "$?" "FAILED-11" "SUCCESS-11"
 
-systemctl start catalogue
 
-VALIDATE "$?" "FAILED-12" "SUCCESS-12"
+ls -l /etc/systemd/system/ | grep catalogue.service  &>> $LOG
 
-ls -l /etc/yum.repos.d/ | grep mongo.repo
+VALIDATE_1 "$?" "cp /home/centos/roboshop-shell-script/catalogue.service /etc/systemd/system/catalogue.service" "SUCCESS-12: catalogue.zip downloaded in temp folder"
 
-VALIDATE_1 "$?" "cp /home/centos/roboshop-shell-script/mongo.repo /etc/yum.repos.d/mongo.repo" "SUCCESS-13"
+systemctl daemon-reload  &>> $LOG
 
-dnf install mongodb-org-shell -y
+VALIDATE "$?" "FAILED-13" "SUCCESS-13"
+
+systemctl enable catalogue  &>> $LOG
 
 VALIDATE "$?" "FAILED-14" "SUCCESS-14"
 
-mongo --host mongodb.hellodns.xyz </app/schema/catalogue.js
+systemctl start catalogue  &>> $LOG
 
 VALIDATE "$?" "FAILED-15" "SUCCESS-15"
 
-systemctl status catalogue
+ls -l /etc/yum.repos.d/ | grep mongo.repo  &>> $LOG
+
+VALIDATE_1 "$?" "cp /home/centos/roboshop-shell-script/mongo.repo /etc/yum.repos.d/mongo.repo" "SUCCESS-16"
+
+dnf install mongodb-org-shell -y  &>> $LOG
+
+VALIDATE "$?" "FAILED-17" "SUCCESS-17"
+
+mongo --host mongodb.hellodns.xyz </app/schema/catalogue.js
+
+VALIDATE "$?" "FAILED-18" "SUCCESS-18"
 
 ss -tulpn
+
+systemctl status catalogue
