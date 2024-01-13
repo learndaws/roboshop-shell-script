@@ -1,6 +1,6 @@
 #!/bin/bash
 
-INSTANCE_NAME=(WEB-Server API-Cart)
+INSTANCE_NAME=("web" "catalogue" "cart" "user" "shipping" "payments" "ratings" "mongodb" "redis" "mysql" "rabit-mq")
 
 
 for line in "${INSTANCE_NAME[@]}"
