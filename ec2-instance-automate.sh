@@ -16,7 +16,7 @@ do
     PRIVATE_IP_ADDRESS=$(aws ec2 describe-instances --instance-ids $FIND_INSTANCE_ID --query 'Reservations[*].Instances[*].PrivateIpAddress' --output text)
     PUBLIC_IP_ADDRESS=$(aws ec2 describe-instances --instance-ids $FIND_INSTANCE_ID --query 'Reservations[*].Instances[*].PublicIpAddress' --output text)
 
-    if [ "$line" == "WEB-Server" ];
+    if [ "$line" == "web" ];
     then
         aws route53 change-resource-record-sets \
             --hosted-zone-id Z08149982GBIICXQF76PI \
