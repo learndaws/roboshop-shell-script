@@ -38,7 +38,6 @@ do
                 ]
             }'
     else 
-            then
         aws route53 change-resource-record-sets \
             --hosted-zone-id Z08149982GBIICXQF76PI \
             --change-batch '{
