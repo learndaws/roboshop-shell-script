@@ -1,6 +1,6 @@
 #!/bin/bash
 
-INSTANCE_NAME=("WEB-Server" "API-Cart")
+INSTANCE_NAME=(WEB-Server API-Cart)
 
 
 for line in "${INSTANCE_NAME[@]}"
