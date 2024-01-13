@@ -20,7 +20,7 @@ do
     then
         aws route53 change-resource-record-sets \
             --hosted-zone-id Z08149982GBIICXQF76PI \
-            --change-batch '{
+            --change-batch {
                 "Changes": [
                 {
                     "Action": "CREATE",
@@ -36,11 +36,11 @@ do
                     }
                 }
                 ]
-            }'
+            }
     else 
         aws route53 change-resource-record-sets \
             --hosted-zone-id Z08149982GBIICXQF76PI \
-            --change-batch '{
+            --change-batch {
                 "Changes": [
                 {
                     "Action": "CREATE",
@@ -56,7 +56,6 @@ do
                     }
                 }
                 ]
-            }'
+            }
 done
-
 
