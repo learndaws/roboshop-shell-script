@@ -1,4 +1,4 @@
-#!\bin\bash
+#!/bin/bash
 
 INSTANCE_NAME=("WEB-Server" "API-Cart")
 
@@ -57,6 +57,6 @@ do
                 }
                 ]
             }'
-            
+
 done
 
