@@ -14,27 +14,50 @@ do
 
     FIND_INSTANCE_ID=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=$line" --query "Reservations[*].Instances[*].InstanceId" --output text)
     PRIVATE_IP_ADDRESS=$(aws ec2 describe-instances --instance-ids $FIND_INSTANCE_ID --query 'Reservations[*].Instances[*].PrivateIpAddress' --output text)
-    
-    
-    aws route53 change-resource-record-sets \
-      --hosted-zone-id Z08149982GBIICXQF76PI \
-      --change-batch '{
-        "Changes": [
-          {
-            "Action": "CREATE",
-            "ResourceRecordSet": {
-              "Name": "'"$line"'.hellodns.xyz",
-              "Type": "A",
-              "TTL": 1,
-              "ResourceRecords": [
+    PUBLIC_IP_ADDRESS=$(aws ec2 describe-instances --instance-ids $FIND_INSTANCE_ID --query 'Reservations[*].Instances[*].PublicIpAddress' --output text)
+
+    if [ "$line" == "WEB-Server" ];
+    then
+        aws route53 change-resource-record-sets \
+            --hosted-zone-id Z08149982GBIICXQF76PI \
+            --change-batch '{
+                "Changes": [
                 {
-                  "Value": "'"$PRIVATE_IP_ADDRESS"'"
+                    "Action": "CREATE",
+                    "ResourceRecordSet": {
+                    "Name": "'"$line"'.hellodns.xyz",
+                    "Type": "A",
+                    "TTL": 1,
+                    "ResourceRecords": [
+                        {
+                        "Value": "'"$PUBLIC_IP_ADDRESS"'"
+                        }
+                    ]
+                    }
                 }
-              ]
-            }
-          }
-        ]
-      }'
+                ]
+            }'
+    else 
+            then
+        aws route53 change-resource-record-sets \
+            --hosted-zone-id Z08149982GBIICXQF76PI \
+            --change-batch '{
+                "Changes": [
+                {
+                    "Action": "CREATE",
+                    "ResourceRecordSet": {
+                    "Name": "'"$line"'.hellodns.xyz",
+                    "Type": "A",
+                    "TTL": 1,
+                    "ResourceRecords": [
+                        {
+                        "Value": "'"$PRIVATE_IP_ADDRESS"'"
+                        }
+                    ]
+                    }
+                }
+                ]
+            }'
 
 done
 
