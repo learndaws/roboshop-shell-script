@@ -17,24 +17,24 @@ do
     
     
     aws route53 change-resource-record-sets \
-  --hosted-zone-id Z08149982GBIICXQF76PI \
-  --change-batch "{
-    "Changes": [
-      {
-        "Action": "CREATE",
-        "ResourceRecordSet": {
-          "Name": "$line.hellodns.xyz",
-          "Type": "A",
-          "TTL": 1,
-          "ResourceRecords": [
-            {
-              "Value": "$PRIVATE_IP_ADDRES"
+      --hosted-zone-id Z08149982GBIICXQF76PI \
+      --change-batch '{
+        "Changes": [
+          {
+            "Action": "CREATE",
+            "ResourceRecordSet": {
+              "Name": "'"$line"'.hellodns.xyz",
+              "Type": "A",
+              "TTL": 1,
+              "ResourceRecords": [
+                {
+                  "Value": "'"$PRIVATE_IP_ADDRESS"'"
+                }
+              ]
             }
-          ]
-        }
-      }
-    ]
-  }"
+          }
+        ]
+      }'
 
 done
 
