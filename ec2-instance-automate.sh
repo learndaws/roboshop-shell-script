@@ -5,7 +5,7 @@ INSTANCE_NAME=("web" "catalogue" "cart" "user" "shipping" "payments" "ratings" "
 
 for line in "${INSTANCE_NAME[@]}"
 do 
-    if [ "$line" == "DB-Mongo" ] || [ "$line" == "DB-Mysql" ] || [ "$line" == "API-Shipping" ];
+    if [ "$line" == "mongodb" ] || [ "$line" == "mysql" ] || [ "$line" == "shipping" ];
     then 
         aws ec2 run-instances --image-id ami-03265a0778a880afb --instance-type t3.small --security-group-ids sg-01c0b35339d630515 --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$line}]"
     else 
