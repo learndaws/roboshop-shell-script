@@ -2,8 +2,8 @@
 
 INSTANCE_NAME=("WEB-Server" "API-Catalogue" "API-Cart" "API-User" "API-Shipping" "API-Payments" "API-Ratings" "DB-Mongo" "DB-Redis" "DB-Mysql" "DB-Rabit MQ")
 
-for line in "${INSTANCES_NAME[@]}"
+for i in "${INSTANCES_NAME[@]}"
 do 
-    echo "$line"
+    echo "$i"
 done
 
