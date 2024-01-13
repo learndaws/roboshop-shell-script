@@ -23,7 +23,6 @@ do
         IP_ADDRESS_TYPE=$PUBLIC_IP_ADDRESS        
     else 
         IP_ADDRESS_TYPE=$PRIVATE_IP_ADDRESS 
-
     fi
         aws route53 change-resource-record-sets \
             --hosted-zone-id Z08149982GBIICXQF76PI \
@@ -44,6 +43,5 @@ do
                 }
                 ]
             }'
-    fi
 done
 
