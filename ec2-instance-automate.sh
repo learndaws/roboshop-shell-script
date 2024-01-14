@@ -1,6 +1,6 @@
 #!/bin/bash
 
-INSTANCES_NAME=("cart" "user" "shipping" "payments" "ratings" "mongodb" "redis" "mysql" "rabit-mq")
+INSTANCES_NAME=("cart" "user" "shipping" "payments")
 
 
 for line in "${INSTANCES_NAME[@]}"
