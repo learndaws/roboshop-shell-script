@@ -12,7 +12,7 @@ do
         INSTANCE_TYPE=t2.micro
     fi
 
-    aws ec2 run-instances --image-id ami-03265a0778a880afb --instance-type $INSTANCE_TYPE --security-group-ids sg-01c0b35339d630515 --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$line}]"
+    aws ec2 run-instances --image-id ami-0f3c7d07486cad139 --instance-type $INSTANCE_TYPE --security-group-ids sg-01c0b35339d630515 --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$line}]"
 
     FIND_INSTANCE_ID=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=$line" --query "Reservations[*].Instances[*].InstanceId" --output text)
     PRIVATE_IP_ADDRESS=$(aws ec2 describe-instances --instance-ids $FIND_INSTANCE_ID --query 'Reservations[*].Instances[*].PrivateIpAddress' --output text)
