@@ -29,7 +29,7 @@ do
             --change-batch '{
                 "Changes": [
                 {
-                    "Action": "CREATE",
+                    "Action": "UPSERT",
                     "ResourceRecordSet": {
                     "Name": "'"$line"'.hellodns.xyz",
                     "Type": "A",
